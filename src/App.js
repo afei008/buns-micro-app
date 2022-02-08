@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
+
+import Home from './pages/Home';
+import About from './pages/About';
+import ReactMicroApp from './pages/ReactMicroApp';
+import Vue3MicroApp from './pages/Vue3MicroApp';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <div>
+                <header className='{styles.header}'>
+                    <Link to='/'>基座 Home</Link> | 
+                    <Link to='/about'>基座 About</Link> | 
+                    <Link to='/react-app'>React 子应用</Link> | 
+                    <Link to='/vue3-app'>Vue3 子应用</Link>
+                </header>
+
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/about' element={<About />} />
+                    <Route path='/react-app' element={<ReactMicroApp />} />
+                    <Route path='/vue3-app' element={<Vue3MicroApp />} />
+                </Routes>
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;
